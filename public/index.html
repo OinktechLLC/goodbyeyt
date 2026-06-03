@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoodbyeYT — YouTube для России</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=YouTube+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📺</text></svg>" />
+</head>
+<body>
+
+<!-- OVERLAY: Terms & Privacy (первый запуск) -->
+<div id="terms-overlay" class="overlay hidden">
+  <div class="modal terms-modal">
+    <div class="modal-header">
+      <div class="logo-sm"><span class="logo-text">Goodbye<span class="red">YT</span></span></div>
+      <h2>Добро пожаловать!</h2>
+      <p class="subtitle">Перед использованием ознакомьтесь с условиями</p>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="terms">Условия использования</button>
+      <button class="tab-btn" data-tab="privacy">Политика конфиденциальности</button>
+      <button class="tab-btn" data-tab="about">О проекте</button>
+    </div>
+    <div class="tab-content" id="tab-terms">
+      <div class="legal-text" id="terms-text">
+        <h3>Условия использования GoodbyeYT</h3>
+        <p><strong>Последнее обновление:</strong> 2024 год</p>
+
+        <h4>1. Общие положения</h4>
+        <p>GoodbyeYT — независимый некоммерческий проект, предоставляющий альтернативный интерфейс для доступа к видеоконтенту платформы YouTube через открытые публичные инстансы (Piped, Cobalt). Мы не являемся аффилированными с Google LLC или YouTube.</p>
+
+        <h4>2. Использование YouTube API</h4>
+        <p>Приложение использует <strong>ваш личный API-ключ YouTube Data API v3</strong>, который вы предоставляете добровольно. Ключ хранится только в вашем браузере (localStorage) и не передаётся на наши серверы.</p>
+        <p>Использование YouTube API подчиняется <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service" target="_blank">Условиям использования YouTube API</a> и <a href="https://policies.google.com/privacy" target="_blank">Политике конфиденциальности Google</a>.</p>
+
+        <h4>3. Правила использования</h4>
+        <ul>
+          <li>Использование GoodbyeYT разрешено только в личных некоммерческих целях</li>
+          <li>Запрещено использование для незаконных целей</li>
+          <li>Запрещено нарушение авторских прав на контент</li>
+          <li>Мы не несём ответственности за контент, размещённый на YouTube</li>
+          <li>Пользователь самостоятельно несёт ответственность за соблюдение законодательства своей страны</li>
+        </ul>
+
+        <h4>4. Открытые инстансы</h4>
+        <p>Видеостримы доставляются через открытые публичные инстансы проектов Piped и Cobalt. Качество и доступность стримов зависит от этих третьих сторон. Мы не несём ответственности за их работоспособность.</p>
+
+        <h4>5. Ограничение ответственности</h4>
+        <p>GoodbyeYT предоставляется «как есть», без каких-либо гарантий. Мы не несём ответственности за любые убытки, возникшие в результате использования или невозможности использования сервиса.</p>
+
+        <h4>6. Интеллектуальная собственность</h4>
+        <p>GoodbyeYT является открытым проектом. Авторские права на видеоконтент принадлежат соответствующим правообладателям. Мы не претендуем на права на контент YouTube.</p>
+
+        <h4>7. Изменения условий</h4>
+        <p>Мы оставляем за собой право изменять эти условия. Продолжение использования сервиса означает согласие с новыми условиями.</p>
+
+        <h4>8. Применимое право</h4>
+        <p>Настоящие условия регулируются законодательством Российской Федерации.</p>
+      </div>
+    </div>
+    <div class="tab-content hidden" id="tab-privacy">
+      <div class="legal-text">
+        <h3>Политика конфиденциальности GoodbyeYT</h3>
+        <p><strong>Последнее обновление:</strong> 2024 год</p>
+
+        <h4>1. Какие данные мы собираем</h4>
+        <p><strong>Мы не собираем персональные данные.</strong> GoodbyeYT работает как прокси-клиент.</p>
+        <ul>
+          <li><strong>API-ключ YouTube</strong>: хранится только в вашем браузере (localStorage), не передаётся на наши серверы</li>
+          <li><strong>Настройки</strong>: тема, язык, качество видео — хранятся локально в браузере</li>
+          <li><strong>Логи сервера</strong>: анонимные технические логи (IP, время запроса) для диагностики, без привязки к личности</li>
+        </ul>
+
+        <h4>2. Как используются данные</h4>
+        <ul>
+          <li>API-ключ используется исключительно для запросов к YouTube Data API v3 от вашего имени</li>
+          <li>Мы не продаём, не передаём, не обрабатываем ваши данные в коммерческих целях</li>
+          <li>Мы не используем аналитику, трекеры и рекламные сети</li>
+        </ul>
+
+        <h4>3. Cookie</h4>
+        <p>Мы используем только технически необходимые cookie (сессия). Рекламные и трекинговые cookie отсутствуют.</p>
+
+        <h4>4. Третьи стороны</h4>
+        <p>При воспроизведении видео запросы могут направляться к публичным инстансам Piped/Cobalt и серверам YouTube/Google. На их политику конфиденциальности мы не влияем.</p>
+
+        <h4>5. Безопасность данных</h4>
+        <p>Мы применяем стандартные меры безопасности (HTTPS, заголовки безопасности). Однако абсолютная безопасность в интернете невозможна.</p>
+
+        <h4>6. Ваши права</h4>
+        <p>Вы можете в любой момент очистить все локальные данные через «Настройки → Сбросить данные».</p>
+
+        <h4>7. Контакт</h4>
+        <p>Вопросы по конфиденциальности: <a href="https://github.com/goodbyeyt" target="_blank">github.com/goodbyeyt</a></p>
+      </div>
+    </div>
+    <div class="tab-content hidden" id="tab-about">
+      <div class="legal-text about-content">
+        <div class="about-logo">📺</div>
+        <h3>GoodbyeYT</h3>
+        <p class="about-tagline">Независимый YouTube-клиент для российского рынка</p>
+
+        <h4>Кто мы?</h4>
+        <p>GoodbyeYT — <strong>независимый некоммерческий проект</strong>, созданный энтузиастами. Мы не связаны с Google, YouTube, Роскомнадзором или какими-либо государственными структурами.</p>
+
+        <h4>Наша миссия</h4>
+        <p>Дать российским пользователям удобный, быстрый и безопасный доступ к YouTube-контенту, используя открытые технологии и публичные API.</p>
+
+        <h4>Технологии</h4>
+        <ul>
+          <li>🔴 <strong>YouTube Data API v3</strong> — поиск и метаданные</li>
+          <li>⚡ <strong>Piped</strong> — открытый фронтенд YouTube для стриминга</li>
+          <li>🔗 <strong>Cobalt</strong> — открытый инструмент для работы с медиа</li>
+          <li>🛡️ <strong>Node.js + Express</strong> — бэкенд</li>
+        </ul>
+
+        <h4>Открытый исходный код</h4>
+        <p>Весь код GoodbyeYT открыт и доступен на <a href="https://github.com/goodbyeyt" target="_blank">GitHub</a>. Мы приветствуем вклад сообщества.</p>
+
+        <h4>Поддержать проект</h4>
+        <p>Поставьте ⭐ на GitHub, расскажите друзьям, помогите с переводом или кодом!</p>
+      </div>
+    </div>
+    <div class="terms-footer">
+      <label class="checkbox-label" id="read-check-container">
+        <input type="checkbox" id="terms-read-checkbox" />
+        <span class="checkmark"></span>
+        <span>Я прочитал(а) и принимаю <button class="link-btn" id="open-terms-tab">условия использования</button> и <button class="link-btn" id="open-privacy-tab">политику конфиденциальности</button></span>
+      </label>
+      <div class="read-warning hidden" id="read-warning">⚠️ Пожалуйста, ознакомьтесь со всеми тремя вкладками перед принятием</div>
+      <button class="btn-primary" id="accept-terms-btn" disabled>Принять и продолжить</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY: API Key Setup / Tutorial -->
+<div id="apikey-overlay" class="overlay hidden">
+  <div class="modal apikey-modal">
+    <div class="modal-header">
+      <div class="logo-sm"><span class="logo-text">Goodbye<span class="red">YT</span></span></div>
+      <h2>Настройка API ключа</h2>
+    </div>
+    <div class="tutorial-tabs">
+      <button class="tutorial-tab active" data-step="1">1. Создать проект</button>
+      <button class="tutorial-tab" data-step="2">2. Включить API</button>
+      <button class="tutorial-tab" data-step="3">3. Получить ключ</button>
+      <button class="tutorial-tab" data-step="4">4. Ввести ключ</button>
+    </div>
+
+    <div class="tutorial-step active" id="step-1">
+      <div class="step-icon">🌐</div>
+      <h3>Шаг 1: Создайте проект в Google Cloud</h3>
+      <ol class="step-list">
+        <li>Перейдите на <a href="https://console.cloud.google.com/" target="_blank" class="btn-link">console.cloud.google.com</a></li>
+        <li>Нажмите <strong>«Выбрать проект»</strong> → <strong>«Новый проект»</strong></li>
+        <li>Введите название, например: <code>GoodbyeYT</code></li>
+        <li>Нажмите <strong>«Создать»</strong></li>
+      </ol>
+      <div class="step-screenshot">
+        <div class="screenshot-mock">
+          <div class="mock-header">Google Cloud Console</div>
+          <div class="mock-body">
+            <div class="mock-btn">☁️ Выбрать проект ▾</div>
+            <div class="mock-popup">
+              <div class="mock-item">Мои проекты</div>
+              <div class="mock-item highlight">+ Новый проект</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary next-step">Далее →</button>
+    </div>
+
+    <div class="tutorial-step hidden" id="step-2">
+      <div class="step-icon">🔌</div>
+      <h3>Шаг 2: Включите YouTube Data API v3</h3>
+      <ol class="step-list">
+        <li>В боковом меню выберите <strong>«API и сервисы»</strong> → <strong>«Библиотека»</strong></li>
+        <li>В поиске введите: <code>YouTube Data API v3</code></li>
+        <li>Нажмите на результат и нажмите кнопку <strong>«Включить»</strong></li>
+        <li>Подождите несколько секунд</li>
+      </ol>
+      <div class="step-screenshot">
+        <div class="screenshot-mock">
+          <div class="mock-header">Библиотека API</div>
+          <div class="mock-body">
+            <div class="mock-search">🔍 YouTube Data API v3</div>
+            <div class="mock-card">
+              <div class="mock-card-title">YouTube Data API v3</div>
+              <div class="mock-card-sub">Google</div>
+              <div class="mock-btn green">Включить</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-secondary prev-step">← Назад</button>
+        <button class="btn-primary next-step">Далее →</button>
+      </div>
+    </div>
+
+    <div class="tutorial-step hidden" id="step-3">
+      <div class="step-icon">🔑</div>
+      <h3>Шаг 3: Создайте API ключ</h3>
+      <ol class="step-list">
+        <li>Перейдите в <strong>«API и сервисы»</strong> → <strong>«Учётные данные»</strong></li>
+        <li>Нажмите <strong>«+ Создать учётные данные»</strong> → <strong>«Ключ API»</strong></li>
+        <li>Ключ будет создан — скопируйте его</li>
+        <li><em>Опционально:</em> ограничьте ключ до YouTube Data API v3 для безопасности</li>
+      </ol>
+      <div class="step-screenshot">
+        <div class="screenshot-mock">
+          <div class="mock-header">Учётные данные</div>
+          <div class="mock-body">
+            <div class="mock-btn">+ Создать учётные данные ▾</div>
+            <div class="mock-popup">
+              <div class="mock-item highlight">🔑 Ключ API</div>
+              <div class="mock-item">OAuth 2.0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        <span>💡</span>
+        <span>Бесплатная квота: <strong>10 000 единиц/день</strong> (~100 поисков). Этого более чем достаточно для личного использования.</span>
+      </div>
+      <div class="step-nav">
+        <button class="btn-secondary prev-step">← Назад</button>
+        <button class="btn-primary next-step">Далее →</button>
+      </div>
+    </div>
+
+    <div class="tutorial-step hidden" id="step-4">
+      <div class="step-icon">✅</div>
+      <h3>Шаг 4: Введите ваш API ключ</h3>
+      <p class="step-desc">Ключ сохраняется только в вашем браузере и никуда не передаётся</p>
+      <div class="key-input-group">
+        <input type="text" id="api-key-input" placeholder="AIzaSy..." class="api-key-input" autocomplete="off" />
+        <button class="btn-validate" id="validate-key-btn">Проверить</button>
+      </div>
+      <div class="key-status hidden" id="key-status"></div>
+      <div class="step-nav">
+        <button class="btn-secondary prev-step">← Назад</button>
+        <button class="btn-primary" id="save-key-btn" disabled>Начать использование 🚀</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <!-- Header -->
+  <header class="header" id="main-header">
+    <div class="header-left">
+      <button class="menu-btn" id="sidebar-toggle" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="/" class="logo" id="home-link">
+        <span class="logo-text">Goodbye<span class="red">YT</span></span>
+      </a>
+    </div>
+    <div class="header-center">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Поиск" autocomplete="off" />
+        <button class="search-btn" id="search-btn" aria-label="Найти">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+        <button class="voice-btn" id="voice-btn" aria-label="Голосовой поиск">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="instance-indicator" id="instance-indicator" title="Статус инстансов">
+        <span class="dot"></span>
+      </div>
+      <button class="icon-btn" id="settings-btn" aria-label="Настройки">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+          <path d="M21.7 11.3l-1.5-.9a8.9 8.9 0 0 0 0-2.8l1.5-.9c.4-.2.5-.7.3-1.1l-1-1.7a.8.8 0 0 0-1-.3l-1.6.6a9.1 9.1 0 0 0-2.4-1.4L15.7 1a.8.8 0 0 0-.8-.7h-2a.8.8 0 0 0-.8.7l-.3 1.8a9.1 9.1 0 0 0-2.4 1.4l-1.6-.6a.8.8 0 0 0-1 .3L5.8 5.6a.8.8 0 0 0 .3 1.1l1.5.9a8.9 8.9 0 0 0 0 2.8l-1.5.9a.8.8 0 0 0-.3 1.1l1 1.7c.2.4.7.5 1 .3l1.6-.6c.7.5 1.5 1 2.4 1.4l.3 1.8c.1.4.4.7.8.7h2c.4 0 .7-.3.8-.7l.3-1.8a9.1 9.1 0 0 0 2.4-1.4l1.6.6c.4.2.8 0 1-.3l1-1.7c.2-.4.1-.9-.3-1.1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <a class="nav-item active" href="#" id="nav-home" data-view="home">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <span>Главная</span>
+    </a>
+    <a class="nav-item" href="#" id="nav-trending" data-view="trending">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 7.47l-5-5a.75.75 0 0 0-1.06 0l-5 5a.75.75 0 1 0 1.06 1.06L11 4.06v14.69a.75.75 0 0 0 1.5 0V4.06l3.47 3.47c.15.15.34.22.53.22s.38-.07.53-.22a.75.75 0 0 0 0-1.06z"/></svg>
+      <span>В тренде</span>
+    </a>
+    <div class="nav-divider"></div>
+    <a class="nav-item" href="#" id="nav-history" data-view="history">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-7-7V3z"/><path d="M13 8v5l3 3-1.4 1.4L11 14V8z"/></svg>
+      <span>История</span>
+    </a>
+    <div class="nav-divider"></div>
+    <a class="nav-item" href="#" id="nav-instances">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4l2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+      <span>Инстансы</span>
+    </a>
+    <a class="nav-item" href="#" id="nav-about" data-view="about">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      <span>О проекте</span>
+    </a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content" id="main-content">
+
+    <!-- Home / Search Results -->
+    <div class="view" id="view-home">
+      <div class="chips-bar" id="chips-bar">
+        <button class="chip active" data-q="">Всё</button>
+        <button class="chip" data-q="музыка">Музыка</button>
+        <button class="chip" data-q="игры">Игры</button>
+        <button class="chip" data-q="новости">Новости</button>
+        <button class="chip" data-q="спорт">Спорт</button>
+        <button class="chip" data-q="кино">Кино</button>
+        <button class="chip" data-q="технологии">Технологии</button>
+        <button class="chip" data-q="кулинария">Кулинария</button>
+        <button class="chip" data-q="путешествия">Путешествия</button>
+        <button class="chip" data-q="образование">Образование</button>
+      </div>
+      <div class="video-grid" id="video-grid">
+        <div class="loading-state" id="grid-loading">
+          <div class="spinner"></div>
+          <p>Загружаем видео...</p>
+        </div>
+      </div>
+      <div class="load-more-container">
+        <button class="btn-load-more hidden" id="load-more-btn">Загрузить ещё</button>
+      </div>
+    </div>
+
+    <!-- Video Player View -->
+    <div class="view hidden" id="view-player">
+      <div class="player-layout">
+        <div class="player-main">
+          <div class="player-wrapper">
+            <video id="main-video" class="main-video" crossorigin="anonymous" playsinline></video>
+            <div class="player-overlay" id="player-overlay">
+              <div class="player-spinner hidden" id="player-spinner">
+                <div class="spinner"></div>
+              </div>
+              <!-- Click to play/pause -->
+              <div class="click-zone" id="player-click-zone"></div>
+              <!-- Controls -->
+              <div class="player-controls" id="player-controls">
+                <div class="progress-container">
+                  <div class="progress-bar" id="progress-bar">
+                    <div class="progress-buffered" id="progress-buffered"></div>
+                    <div class="progress-played" id="progress-played"></div>
+                    <div class="progress-thumb" id="progress-thumb"></div>
+                  </div>
+                </div>
+                <div class="controls-row">
+                  <div class="controls-left">
+                    <button class="ctrl-btn" id="play-pause-btn" aria-label="Воспроизведение">
+                      <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                      <svg class="icon-pause hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+                    <button class="ctrl-btn" id="prev-10-btn" title="−10 секунд">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="8" y="17" font-size="6" fill="currentColor">10</text></svg>
+                    </button>
+                    <button class="ctrl-btn" id="next-10-btn" title="+10 секунд">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="8" y="17" font-size="6" fill="currentColor">10</text></svg>
+                    </button>
+                    <div class="volume-control">
+                      <button class="ctrl-btn" id="mute-btn" aria-label="Звук">
+                        <svg class="icon-vol" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                        <svg class="icon-mute hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                      </button>
+                      <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.05" value="1" />
+                    </div>
+                    <span class="time-display" id="time-display">0:00 / 0:00</span>
+                  </div>
+                  <div class="controls-right">
+                    <div class="skip-select-wrap">
+                      <label class="ctrl-label">Пропуск:</label>
+                      <select class="ctrl-select" id="skip-amount-select">
+                        <option value="5">5 сек</option>
+                        <option value="10" selected>10 сек</option>
+                        <option value="15">15 сек</option>
+                        <option value="20">20 сек</option>
+                        <option value="30">30 сек</option>
+                      </select>
+                    </div>
+                    <div class="quality-wrap">
+                      <label class="ctrl-label">Качество:</label>
+                      <select class="ctrl-select" id="quality-select">
+                        <option value="auto">Авто</option>
+                      </select>
+                    </div>
+                    <div class="speed-wrap">
+                      <label class="ctrl-label">Скорость:</label>
+                      <select class="ctrl-select" id="speed-select">
+                        <option value="0.5">0.5×</option>
+                        <option value="0.75">0.75×</option>
+                        <option value="1" selected>1×</option>
+                        <option value="1.25">1.25×</option>
+                        <option value="1.5">1.5×</option>
+                        <option value="2">2×</option>
+                      </select>
+                    </div>
+                    <button class="ctrl-btn" id="fullscreen-btn" aria-label="На весь экран">
+                      <svg class="icon-fs-enter" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                      <svg class="icon-fs-exit hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Info -->
+          <div class="video-info" id="video-info">
+            <h1 class="video-title" id="video-title"></h1>
+            <div class="video-meta">
+              <div class="video-stats" id="video-stats"></div>
+              <div class="video-actions">
+                <button class="action-btn" id="like-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                  <span id="like-count">—</span>
+                </button>
+                <button class="action-btn" id="share-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                  Поделиться
+                </button>
+              </div>
+            </div>
+            <div class="channel-row" id="channel-row">
+              <div class="channel-avatar" id="channel-avatar"></div>
+              <div class="channel-info">
+                <div class="channel-name" id="channel-name"></div>
+                <div class="channel-subs" id="channel-subs"></div>
+              </div>
+            </div>
+            <div class="video-description collapsed" id="video-description"></div>
+            <button class="expand-desc-btn" id="expand-desc">Ещё</button>
+          </div>
+
+          <!-- Comments -->
+          <div class="comments-section" id="comments-section">
+            <h3 class="comments-title" id="comments-count">Комментарии</h3>
+            <div class="comments-list" id="comments-list"></div>
+            <button class="btn-load-more hidden" id="load-more-comments">Загрузить ещё комментарии</button>
+          </div>
+        </div>
+
+        <!-- Sidebar: Related -->
+        <aside class="player-sidebar" id="player-sidebar">
+          <div class="related-list" id="related-list"></div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Trending -->
+    <div class="view hidden" id="view-trending">
+      <h2 class="section-title">В тренде</h2>
+      <div class="video-grid" id="trending-grid"></div>
+    </div>
+
+    <!-- History -->
+    <div class="view hidden" id="view-history">
+      <h2 class="section-title">История просмотров</h2>
+      <div class="video-grid" id="history-grid"></div>
+      <div class="empty-state hidden" id="history-empty">
+        <div class="empty-icon">📭</div>
+        <p>История просмотров пуста</p>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="view hidden" id="view-about">
+      <div class="about-page">
+        <div class="about-hero">
+          <div class="about-logo-big">📺</div>
+          <h1>GoodbyeYT</h1>
+          <p class="tagline">Независимый YouTube-клиент для России</p>
+        </div>
+        <div class="about-cards">
+          <div class="about-card">
+            <span class="card-icon">🔓</span>
+            <h3>Открытый код</h3>
+            <p>Весь код проекта открыт на GitHub. Никаких скрытых сценариев.</p>
+          </div>
+          <div class="about-card">
+            <span class="card-icon">🛡️</span>
+            <h3>Приватность</h3>
+            <p>Ваш API-ключ хранится только в браузере. Мы не собираем данные.</p>
+          </div>
+          <div class="about-card">
+            <span class="card-icon">⚡</span>
+            <h3>Быстро</h3>
+            <p>Автоматический выбор быстрейшего инстанса для стриминга.</p>
+          </div>
+          <div class="about-card">
+            <span class="card-icon">🔄</span>
+            <h3>Всегда работает</h3>
+            <p>Робот ежедневно проверяет инстансы и переключается на рабочие.</p>
+          </div>
+        </div>
+        <div class="about-links">
+          <a href="https://github.com/goodbyeyt" class="btn-ghost" target="_blank">⭐ GitHub</a>
+          <button class="btn-ghost" id="show-terms-again">📋 Условия использования</button>
+          <button class="btn-ghost" id="change-api-key">🔑 Сменить API ключ</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Settings Modal -->
+  <div class="modal-backdrop hidden" id="settings-backdrop">
+    <div class="modal settings-modal">
+      <div class="modal-top">
+        <h2>Настройки</h2>
+        <button class="close-btn" id="close-settings">✕</button>
+      </div>
+      <div class="settings-list">
+        <div class="setting-item">
+          <span>Тема</span>
+          <select id="theme-select">
+            <option value="dark">Тёмная</option>
+            <option value="light">Светлая</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <span>API ключ</span>
+          <button class="btn-secondary sm" id="change-key-settings">Изменить</button>
+        </div>
+        <div class="setting-item">
+          <span>Статус инстансов</span>
+          <span class="setting-value" id="instances-status-text">—</span>
+        </div>
+        <div class="setting-item">
+          <span>Очистить историю</span>
+          <button class="btn-danger sm" id="clear-history-btn">Очистить</button>
+        </div>
+        <div class="setting-item">
+          <span>Сбросить все данные</span>
+          <button class="btn-danger sm" id="reset-all-btn">Сбросить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toast-container"></div>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

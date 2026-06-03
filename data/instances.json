@@ -1,0 +1,26 @@
+{
+  "updatedAt": "2024-01-01T00:00:00.000Z",
+  "piped": [
+    { "url": "https://pipedapi.kavin.rocks", "latency": 200 },
+    { "url": "https://piped-api.garudalinux.org", "latency": 280 },
+    { "url": "https://api.piped.yt", "latency": 320 },
+    { "url": "https://pipedapi.adminforge.de", "latency": 350 },
+    { "url": "https://piped-api.privacy.com.de", "latency": 400 },
+    { "url": "https://api.piped.projectsegfau.lt", "latency": 420 },
+    { "url": "https://pipedapi.darkness.services", "latency": 450 },
+    { "url": "https://piped.lunar.icu/api", "latency": 460 },
+    { "url": "https://pipedapi.leptons.xyz", "latency": 480 },
+    { "url": "https://pipedapi.drgns.space", "latency": 500 }
+  ],
+  "cobalt": [
+    { "url": "https://co.wuk.sh", "latency": 200 },
+    { "url": "https://cobalt.catgirl.land", "latency": 300 },
+    { "url": "https://cobalt-api.ayo.tf", "latency": 350 }
+  ],
+  "stats": {
+    "pipedTotal": 20,
+    "pipedWorking": 10,
+    "cobaltTotal": 6,
+    "cobaltWorking": 3
+  }
+}
